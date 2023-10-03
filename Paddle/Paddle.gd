@@ -14,6 +14,8 @@ func _ready():
 func _physics_process(_delta):
 	target.x = clamp(target.x, width/2, Global.VP.x - width/2)
 	position = target
+	if $Highlight.modulate.a > 0:
+		$Highlight.modulate.a -= decay
 	for c in $Powerups.get_children():
 		c.payload()
 
@@ -22,7 +24,8 @@ func _input(event):
 		target.x += event.relative.x
 
 func hit(_ball):
-	pass
+	$Highlight.modulate.a = 1.0
+	$Confetti.emitting = true
 
 func powerup(payload):
 	for c in $Powerups.get_children():

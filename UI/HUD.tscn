@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://do7pdpjxteg8e"]
+[gd_scene load_steps=3 format=3 uid="uid://do7pdpjxteg8e"]
 
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dh42bpdcq0eki" path="res://Assets/LeagueGothic-1.601/static/OTF/LeagueGothic-Regular.otf" id="2_cau7e"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -28,6 +29,8 @@ layout_mode = 0
 offset_left = 15.0
 offset_right = 215.0
 offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_cau7e")
+theme_override_font_sizes/font_size = 16
 text = "Score: "
 vertical_alignment = 1
 
@@ -38,6 +41,8 @@ anchor_right = 1.0
 offset_left = -214.0
 offset_right = -14.0
 offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_cau7e")
+theme_override_font_sizes/font_size = 16
 text = "Time: "
 horizontal_alignment = 2
 vertical_alignment = 1

@@ -37,6 +37,7 @@ script = ExtResource("6")
 [node name="ColorRect" type="ColorRect" parent="Wall_Container/Wall_Right"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Container/Wall_Right"]
+visible = false
 position = Vector2(90, 400)
 shape = SubResource("1")
 
