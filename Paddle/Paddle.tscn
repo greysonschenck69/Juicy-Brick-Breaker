@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmwf8wjdir6y5"]
+[gd_scene load_steps=8 format=3 uid="uid://dmwf8wjdir6y5"]
 
 [ext_resource type="Script" path="res://Paddle/Paddle.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dpnwnkcc78eb" path="res://Assets/png/paddleRed.png" id="2_3g3sw"]
@@ -7,6 +7,16 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(103, 28)
+
+[sub_resource type="Curve" id="Curve_t2q5d"]
+max_value = 255.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9625, 0.305263), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_t7r31"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Paddle" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -17,18 +27,7 @@ shape = SubResource("1")
 
 [node name="Powerups" type="Node2D" parent="."]
 
-[node name="Paddle" type="Sprite2D" parent="."]
-position = Vector2(50, 10)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_3g3sw")
-
-[node name="Highlight" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(50, 10)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_p552s")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(50, -10)
 emitting = false
 amount = 6
@@ -37,3 +36,24 @@ one_shot = true
 explosiveness = 0.7
 randomness = 1.0
 texture = ExtResource("4_wdoev")
+direction = Vector2(0, -1)
+spread = 25.0
+initial_velocity_min = 200.0
+initial_velocity_max = 800.0
+angular_velocity_max = 800.0
+scale_amount_curve = SubResource("Curve_t2q5d")
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_t7r31")
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="Paddle" type="Sprite2D" parent="Images"]
+position = Vector2(50, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3g3sw")
+
+[node name="Highlight" type="Sprite2D" parent="Images"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(50, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_p552s")
