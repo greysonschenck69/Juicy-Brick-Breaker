@@ -13,6 +13,12 @@ Move the paddle using the mouse. Help the ball break all the bricks before you r
 
 Built using Godot 4.1.1
 
+Music composed in MuseScore 4.1.1
+
+Sound effects recorded in Audacity 3.3.3
+
+Built using Godot 4.1.1
+
 ## References
  * [Juice it or lose it — a talk by Martin Jonasson & Petri Purho](https://www.youtube.com/watch?v=Fy0aCDmgnxg)
  * [Puzzle Pack 2, provided by kenney.nl](https://kenney.nl/assets/puzzle-pack-2)
