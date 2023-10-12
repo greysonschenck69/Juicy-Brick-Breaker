@@ -13,6 +13,10 @@ var indicator_scale_target = Vector2(1.5,1.5)
 var tween
 var tween2
 
+var fever_h = 0.0
+var fever_s = 0.0
+var fever_v = 0.0
+
 func _ready():
 	update_score()
 	update_time()
@@ -43,8 +47,7 @@ func update_lives():
 func breathe():
 	indicator_scale = indicator_scale_target if indicator_scale == indicator_scale_start else indicator_scale_start
 	indicator_mod = indicator_mod_target if indicator_mod == indicator_mod_start else indicator_mod_start
-	if tween:
-		tween.kill()
+	if tween: tween.kill()
 	tween = get_tree().create_tween().set_parallel(true)
 	for i in $Indicator_Container.get_children():
 		tween.tween_property(i.get_node("Highlight"), "scale", indicator_scale, 0.5)
@@ -56,6 +59,7 @@ func breathe():
 
 func update_fever():
 	$Fever.value = Global.fever
+
 
 func _on_Timer_timeout():
 	Global.update_time(-1)

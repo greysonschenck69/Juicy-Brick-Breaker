@@ -1,14 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=21 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
+[ext_resource type="Script" path="res://Ball/Comet_Container.gd" id="2_clrww"]
+[ext_resource type="Shader" path="res://Effects/Background.gdshader" id="2_enaon"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
+[ext_resource type="Script" path="res://Effects/Background.gd" id="3_ylo3u"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
 [ext_resource type="Script" path="res://Wall/Wall.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://do7pdpjxteg8e" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://r1nm10jeqyta" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://d2p3iwcdv8u3v" path="res://Assets/Untitled score.mp3" id="10_s4eic"]
+[ext_resource type="AudioStream" uid="uid://cxelwlp8mg7pg" path="res://Assets/wall.wav" id="11_larcs"]
+[ext_resource type="AudioStream" uid="uid://bb7jc7fs4m1mh" path="res://Assets/Brick.wav" id="12_frwa6"]
+[ext_resource type="AudioStream" uid="uid://b0rn3s51hmqbb" path="res://Assets/paddle.wav" id="13_sqtis"]
+[ext_resource type="AudioStream" uid="uid://52lcef18aagq" path="res://Assets/die.wav" id="14_lj48q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tplw7"]
+shader = ExtResource("2_enaon")
+shader_parameter/TWOPI = 6.28319
+shader_parameter/NUM_EXPLOSIONS = 8.0
+shader_parameter/NUM_PARTICLES = 70.0
+shader_parameter/MOD3 = Vector3(0.1031, 0.11369, 0.13787)
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -18,6 +33,17 @@ size = Vector2(1224, 200)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tplw7")
+use_parent_material = true
+offset_right = 1246.0
+offset_bottom = 806.0
+color = Color(0.333333, 0.333333, 0.333333, 1)
+script = ExtResource("3_ylo3u")
+
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("2_clrww")
 
 [node name="Wall_Container" type="Node2D" parent="."]
 
@@ -78,8 +104,27 @@ process_mode = 3
 visible = false
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 16.0
+offset_bottom = 8.0
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(577, 400)
+position = Vector2(674, 400)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_s4eic")
+
+[node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_larcs")
+
+[node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_frwa6")
+
+[node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sqtis")
+
+[node name="Die_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_lj48q")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]
