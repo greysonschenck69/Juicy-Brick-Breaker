@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ncql6woi0bx" path="res://Assets/bubble.png" id="2_rajjj"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(90, 31)
+size = Vector2(76.5, 31.75)
 
 [sub_resource type="Curve" id="Curve_i23sy"]
 _data = [Vector2(0, 0.536842), 0.0, 0.0, 0, 0, Vector2(0.475, 1), 0.0, 0.0, 0, 0, Vector2(0.98125, 0), 0.0, 0.0, 0, 0]
@@ -23,11 +23,11 @@ script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_top = 1.0
-offset_right = 90.0
-offset_bottom = 31.0
+offset_right = 76.0
+offset_bottom = 32.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(45, 16)
+position = Vector2(37.75, 16.125)
 shape = SubResource("1")
 
 [node name="Confetti" type="CPUParticles2D" parent="."]

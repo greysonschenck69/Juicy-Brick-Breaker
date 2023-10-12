@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=22 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://d2p3iwcdv8u3v" path="res://Assets/Untitled score.mp3" id="10_s4eic"]
 [ext_resource type="AudioStream" uid="uid://cxelwlp8mg7pg" path="res://Assets/wall.wav" id="11_larcs"]
 [ext_resource type="AudioStream" uid="uid://bb7jc7fs4m1mh" path="res://Assets/Brick.wav" id="12_frwa6"]
+[ext_resource type="Script" path="res://Camera.gd" id="13_o18mm"]
 [ext_resource type="AudioStream" uid="uid://b0rn3s51hmqbb" path="res://Assets/paddle.wav" id="13_sqtis"]
 [ext_resource type="AudioStream" uid="uid://52lcef18aagq" path="res://Assets/die.wav" id="14_lj48q"]
 
@@ -37,8 +38,10 @@ script = ExtResource("4")
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tplw7")
 use_parent_material = true
-offset_right = 1246.0
-offset_bottom = 806.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 1156.0
+offset_bottom = 798.0
 color = Color(0.333333, 0.333333, 0.333333, 1)
 script = ExtResource("3_ylo3u")
 
@@ -104,13 +107,14 @@ process_mode = 3
 visible = false
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
-offset_left = 18.0
-offset_top = 8.0
-offset_right = 16.0
-offset_bottom = 8.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -6.0
+offset_bottom = -12.0
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(674, 400)
+position = Vector2(580, 385)
+script = ExtResource("13_o18mm")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_s4eic")
