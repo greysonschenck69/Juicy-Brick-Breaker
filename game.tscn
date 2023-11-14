@@ -118,6 +118,7 @@ script = ExtResource("13_o18mm")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_s4eic")
+autoplay = true
 
 [node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_larcs")
